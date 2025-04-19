@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Is UB open today?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+        .container {
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            max-width: 90%;
+            width: 500px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 2rem;
+        }
+        .status {
+            font-size: 5rem;
+            font-weight: bold;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .open {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .closed {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .info-source {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+        .date-text {
+            color: #e33452;
+            font-weight: 500;
+        }
+        .ub-text {
+            color: #e735c0;
+            font-weight: 500;
+            font-size: 4rem;
+        }
+        .title-header {
+            color: #333;
+            margin-bottom: 2rem;
+            font-size: 3.5rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2 class="title-header">Is <span class="ub-text"><b>UB</b>🪩</span> open today? 👀</h2>
+    <div class="container">
+        <h1>On this fine date __ the UB is</h1>
+        <div id="status" class="status">CHECKING...</div>
+        <div id="info-source" class="info-source"><i>Source? Trust me bro</i></div>
+    </div>
+
+    <script>
+        function updateStatus() {
+            // Get today's date
+            const today = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDate = today.toLocaleDateString('en-US', options);
+            
+            // Update the heading with today's date
+            document.querySelector('h1').innerHTML = `On this fine<br><span class="date-text"><b>${formattedDate}</b></span>,<br>the ✨<span class="ub-text"><b>UB</b></span>✨ is`;
+            
+            // Assume UB is always open
+            let isOpen = true;
+            
+            // Update status display
+            const statusElement = document.getElementById('status');
+            if (isOpen) {
+                statusElement.innerText = 'OPEN';
+                statusElement.className = 'status open';
+            } else {
+                statusElement.innerText = 'CLOSED';
+                statusElement.className = 'status closed';
+            }
+        }
+        
+        updateStatus();
+    </script>
+</body>
+</html>
